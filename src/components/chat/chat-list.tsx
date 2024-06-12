@@ -89,7 +89,7 @@ export default function ChatList({
           <div className="flex flex-col gap-4 items-center">
             <Image
               src="/logo.png"
-              alt="AI"
+              alt="Logo"
               width={100}
               height={100}
               className="h-20 w-14 object-contain dark:invert"
@@ -186,7 +186,7 @@ export default function ChatList({
                   <Avatar className="flex justify-start items-center">
                     <AvatarImage
                       src="/logo.png"
-                      alt="AI"
+                      alt="Logo"
                       width={6}
                       height={6}
                       className="object-contain dark:invert"
@@ -226,7 +226,7 @@ export default function ChatList({
             <Avatar className="flex justify-start items-center">
               <AvatarImage
                 src="/logo.png"
-                alt="AI"
+                alt="Logo"
                 width={6}
                 height={6}
                 className="object-contain dark:invert"
