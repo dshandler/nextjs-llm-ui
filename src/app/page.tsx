@@ -9,8 +9,16 @@ import {
   DialogTitle,
   DialogContent,
 } from "@/components/ui/dialog";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import UsernameForm from "@/components/username-form";
+import SignInForm from "@/components/signin-form";
 import { getSelectedModel } from "@/lib/model-helper";
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
 import { AIMessage, HumanMessage } from "@langchain/core/messages";
@@ -20,6 +28,10 @@ import { Message, useChat } from "ai/react";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
+import LogInOut from '@/components/ui/loginout';
+import Register from '@/components/ui/register';
+
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function Home() {
   const {
@@ -170,38 +182,70 @@ export default function Home() {
     window.dispatchEvent(new Event("storage"))
     setOpen(isOpen)
   }
+
+  const { user, errorNext, isLoadingNext } = useUser();
   
-  return (
-    <main className="flex h-[calc(100dvh)] flex-col items-center ">
-      <Dialog open={open} onOpenChange={onOpenChange}>
-        <ChatLayout
-          chatId=""
-          setSelectedModel={setSelectedModel}
-          messages={messages}
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={onSubmit}
-          isLoading={isLoading}
-          loadingSubmit={loadingSubmit}
-          error={error}
-          stop={stop}
-          navCollapsedSize={10}
-          defaultLayout={[30, 160]}
-          formRef={formRef}
-          setMessages={setMessages}
-          setInput={setInput}
-        />
-        <DialogContent className="flex flex-col space-y-4">
-          <DialogHeader className="space-y-2">
-            <DialogTitle>Welcome to Your Private LLM!</DialogTitle>
-            <DialogDescription>
-              Enter your name to get started. This is just to personalize your
-              experience.
-            </DialogDescription>
-            <UsernameForm setOpen={setOpen} />
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
-    </main>
-  );
+  if (user) {
+    return (
+    
+      <main className="flex h-[calc(100dvh)] flex-col items-center ">
+        <Dialog open={open} onOpenChange={onOpenChange}>
+          <ChatLayout
+            chatId=""
+            setSelectedModel={setSelectedModel}
+            messages={messages}
+            input={input}
+            handleInputChange={handleInputChange}
+            handleSubmit={onSubmit}
+            isLoading={isLoading}
+            loadingSubmit={loadingSubmit}
+            error={error}
+            stop={stop}
+            navCollapsedSize={10}
+            defaultLayout={[30, 160]}
+            formRef={formRef}
+            setMessages={setMessages}
+            setInput={setInput}
+          />
+          <DialogContent className="flex flex-col space-y-4">
+            <DialogHeader className="space-y-2">
+              <DialogTitle>Welcome to Your Private LLM!</DialogTitle>
+              <DialogDescription>
+                You're ready to start getting answers!
+              </DialogDescription>
+              <SignInForm setOpen={false} />
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      </main>
+      );
+    }
+    return (
+      <main className="flex h-[calc(100dvh)] flex-col justify-center ">
+        <div className="w-full flex flex-col gap-4 pt-8 items-center">
+        <Card>
+        <CardContent className="pb-0 flex flex-col space-y-4">
+            <CardHeader className="pb-0 space-y-2">
+              <CardTitle>Welcome to Your Private LLM!</CardTitle>
+              <CardDescription>
+               Please log in to gain unparalleled private access!
+              </CardDescription>
+              <CardDescription>
+                Or register your interest for our next cohort.
+              </CardDescription>
+            </CardHeader>
+          </CardContent>
+          <div className="grid grid-cols-2 gap-8 px-4 justify-items-center place-content-center h-20">
+                <div className="w-full">
+                <LogInOut/>
+                </div>
+                <div className="w-full">
+                <Register/>
+                </div>
+            </div>
+          </Card>
+          </div>
+
+      </main>
+    )
 }

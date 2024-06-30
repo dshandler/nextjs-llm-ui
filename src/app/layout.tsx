@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner"
 
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,12 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          {children}
-        <Toaster />
-        </ThemeProvider>
-      </body>
+      <UserProvider>
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          <Toaster />
+          </ThemeProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }

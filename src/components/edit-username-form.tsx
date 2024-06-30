@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import React, { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 import { toast } from "sonner"
+import LogInOut from '@/components/ui/loginout'
 
 
 const formSchema = z.object({
@@ -61,31 +62,9 @@ export default function EditUsernameForm({ setOpen }: EditUsernameFormProps) {
        <FormLabel>Theme</FormLabel>
         <ModeToggle />
        </div>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <div className="md:flex gap-4">
-                  <Input
-                    {...field}
-                    type="text"
-                    value={name}
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <Button type="submit">
-                    Change name
-                  </Button>
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </form>
+       <Button type="submit">
+        <LogInOut/>
+       </Button>
     </Form>
   );
 }

@@ -27,6 +27,7 @@ import { set } from "zod";
 import UsernameForm from "./username-form";
 import EditUsernameForm from "./edit-username-form";
 import PullModel from "./pull-model";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function UserSettings() {
   const [name, setName] = useState("");
@@ -61,6 +62,8 @@ export default function UserSettings() {
     };
   }, []);
 
+  const { user, error, isLoadingNext } = useUser();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -77,14 +80,14 @@ export default function UserSettings() {
               className="object-contain"
             />
             <AvatarFallback>
-              {name && name.substring(0, 2).toUpperCase()}
+              {user.name && user.name.substring(0, 2).toUpperCase()}
             </AvatarFallback>
           </Avatar>
           <div className="text-xs truncate">
             {isLoading ? (
               <Skeleton className="w-20 h-4" />
             ) : (
-              name || "Anonymous"
+              user.name
             )}
           </div>
         </Button>
