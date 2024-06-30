@@ -93,7 +93,7 @@ export default function Home() {
     }
 
     if (!localStorage.getItem("ollama_user")) {
-      setOpen(true);
+      setOpen(false);
     }
   }, [selectedModel]);
 
@@ -183,7 +183,7 @@ export default function Home() {
     setOpen(isOpen)
   }
 
-  const { user, errorNext, isLoadingNext } = useUser();
+  const { user } = useUser();
   
   if (user) {
     return (
@@ -213,7 +213,7 @@ export default function Home() {
               <DialogDescription>
                 You're ready to start getting answers!
               </DialogDescription>
-              <SignInForm setOpen={false} />
+              <SignInForm setOpen={setOpen} />
             </DialogHeader>
           </DialogContent>
         </Dialog>

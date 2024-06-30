@@ -62,9 +62,9 @@ export default function SignInForm({ setOpen }: UsernameFormProps) {
             </FormItem>
           )}
         /> */}
-        <Button className="w-full" type="submit">
+        <div className="w-full">
           <LogInOut/>
-        </Button>
+          </div>
       </form>
     </Form>
   )

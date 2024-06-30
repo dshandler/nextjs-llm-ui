@@ -62,7 +62,7 @@ export default function UserSettings() {
     };
   }, []);
 
-  const { user, error, isLoadingNext } = useUser();
+  const { user, error } = useUser();
 
   return (
     <DropdownMenu>
@@ -106,7 +106,7 @@ export default function UserSettings() {
             </DropdownMenuItem>
           </DialogTrigger>
           <DialogContent>
-            <DialogHeader className="space-y-4">
+            <DialogHeader className="space-y-4 w-full">
               <DialogTitle>Settings</DialogTitle>
               <EditUsernameForm setOpen={setOpen} />
             </DialogHeader>

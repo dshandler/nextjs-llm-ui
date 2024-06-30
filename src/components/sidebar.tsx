@@ -13,6 +13,9 @@ import UserSettings from "./user-settings";
 import { useLocalStorageData } from "@/app/hooks/useLocalStorageData";
 import { ScrollArea, Scrollbar } from "@radix-ui/react-scroll-area";
 import PullModel from "./pull-model";
+
+import { useUser } from '@auth0/nextjs-auth0/client';
+
 import {
   Dialog,
   DialogContent,
