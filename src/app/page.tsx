@@ -211,7 +211,7 @@ export default function Home() {
             <DialogHeader className="space-y-2">
               <DialogTitle>Welcome to Your Private LLM!</DialogTitle>
               <DialogDescription>
-                <p>You're ready to start getting answers!</p>
+                You&rsquo;re ready to start getting answers!
               </DialogDescription>
               <SignInForm setOpen={setOpen} />
             </DialogHeader>

@@ -10,6 +10,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { INITIAL_QUESTIONS } from "@/utils/initial-questions";
 import { Button } from "../ui/button";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function ChatList({
   messages,
@@ -80,6 +81,8 @@ export default function ChatList({
       );
     }, 1);
   };
+  const { user } = useUser();
+
 
   if (messages.length === 0) {
     return (
@@ -176,7 +179,7 @@ export default function ChatList({
                       className="object-contain"
                     />
                     <AvatarFallback>
-                      {name && name.substring(0, 2).toUpperCase()}
+                      {user.name && user.name.substring(0, 2).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                 </div>
