@@ -22,13 +22,6 @@ export function RegisterUser() {
     )
   }
 
-export function getRegisterURL() {
-    console.log(process.env.URL)
-    return (
-        process.env.URL
-    )
-}
-
 function Register() {
     const { user, error, isLoading } = useUser();
 
