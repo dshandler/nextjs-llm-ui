@@ -6,9 +6,9 @@ export const GET = handleAuth({
         authorizationParams: {
           prompt: "login",
         },
-        returnTo: process.env.CHAT_URL,
+        returnTo: '/',
       }),
     logout: handleLogout({
-        returnTo: process.env.URL,
+        returnTo: '/',
       }),
 });

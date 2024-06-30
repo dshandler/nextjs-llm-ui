@@ -47,7 +47,7 @@ function Register() {
           );
     } else {
         return (
-            <a href={process.env.REGISTER_BASE_URL} className="flex flex-nowrap gap-2 text-xl text-gray-600 w-full">
+            <a href="https://www.rationare.com" className="flex flex-nowrap gap-2 text-xl text-gray-600 w-full">
                 <Button className="w-full gap-2" type="submit">
                 <RegisterUser/> 
                 <p className="">Register</p>
