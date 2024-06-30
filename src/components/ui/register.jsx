@@ -23,38 +23,16 @@ export function RegisterUser() {
   }
 
 function Register() {
-    const { user, error, isLoading } = useUser();
-
-    if (isLoading) return (
-        <p>Loading...</p>
-    );
-    if (error) {
-        return (
-            <p>{error}</p>
-        );
-    } else if (user) {
-        return (
-            <div className="grid justify-items-center">
-                {/* <div className="text-[14px] sm:text-xl text-gray-600">
-                    Welcome {user.name}! 
-                </div> */}
-                {/* <div >
-                    <a href="/api/auth/logout" className="flex flex-nowrap text-xl text-gray-600">
-                        <Login /> Logout
-                    </a>
-                </div> */}
-            </div>
-          );
-    } else {
-        return (
-            <a href="https://www.rationare.com" className="flex flex-nowrap gap-2 text-xl text-gray-600 w-full">
-                <Button className="w-full gap-2" type="submit">
-                <RegisterUser/> 
-                <p className="">Register</p>
-                </Button>
-            </a>
-        )
-    }
+    
+    return (
+        <a href="https://www.rationare.com" className="flex flex-nowrap gap-2 text-xl text-gray-600 w-full">
+            <Button className="w-full gap-2" type="submit">
+            <RegisterUser/> 
+            <p className="">Register</p>
+            </Button>
+        </a>
+    )
+    
 
 }
 export default Register;

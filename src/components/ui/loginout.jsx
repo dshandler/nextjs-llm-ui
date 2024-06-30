@@ -27,7 +27,11 @@ function LogInOut() {
     const { user, error, isLoading } = useUser();
 
     if (isLoading) return (
+        <div className='className="flex flex-nowrap gap-2 text-xl text-gray-600 w-full'>
+        <Button className="w-full gap-2" type="submit">
         <p>Loading...</p>
+        </Button>
+        </div>
     );
     if (error) {
         return (
